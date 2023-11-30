@@ -9,17 +9,17 @@
 ////////////////////////////MEXAM AQUI/////////////////////////////////////
 
 
-int pwm=100;  //Digite o valor do pwm (0 à 255) OBS: NAO COLOCAR ABAIXO DE 80 NEM MAIOR QUE 200
-int distan_min= 10;  //Define a distância mínima de acionamento do sistema
-int distan_max=30;  //Define a distância máxima de acionamento do sistema
-int tempo_inativo=5000;
-int temp_max=10000;  //Define o tempo máximo que pode permanecer ligado.
+short pwm=100;  //Digite o valor do pwm (0 à 255) OBS: NAO COLOCAR ABAIXO DE 80 NEM MAIOR QUE 200
+short distan_min= 10;  //Define a distância mínima de acionamento do sistema
+short distan_max=30;  //Define a distância máxima de acionamento do sistema
+long int tempo_inativo=5000;
+long int temp_max=10000;  //Define o tempo máximo que pode permanecer ligado.
 
 
 
 ////////////////////////////////////////////////////////
 float duracao, distancia;
-int cont_delay=0;
+long int cont_delay=0;
 
 void setup()
 {
@@ -102,6 +102,7 @@ void dist(){
   duracao = pulseIn(echo, HIGH);
   distancia = (duracao*.0343)/2;
   delay(200);
+  Serial.print("Distancia: ");
   Serial.println(distancia);
 }
 
@@ -111,6 +112,7 @@ void pare(){
     Serial.print("Erro!");
     Serial.println();
     dist();
+    Serial.print("Estado do botao: ");
     Serial.println(digitalRead(botao));
   }
   delay(tempo_inativo);
