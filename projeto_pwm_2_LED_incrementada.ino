@@ -71,7 +71,6 @@ void loop()
     delay(500);
     cont_delay=0;
     if(distancia>=distan_min && distancia<=distan_max){
-      digitalWrite(led,HIGH);
       digitalWrite(2,HIGH);
       analogWrite(sinal,pwm);
       while(distancia>=distan_min && distancia<=distan_max and cont_delay<temp_max){
